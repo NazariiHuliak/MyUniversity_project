@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login_Activity"
+    android:background="@drawable/bg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="52dp"
+        android:layout_marginRight="57dp"
+        android:layout_marginLeft="57dp">
+        <ImageView
+            android:layout_width="169dp"
+            android:layout_height="169dp"
+            android:src="@drawable/student"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_bold"
+            android:text="Welcome"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="42dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="31dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/rubik_bold"
+                android:text="username"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="27dp"
+                app:boxCornerRadiusBottomStart="27dp"
+                app:boxCornerRadiusTopEnd="27dp"
+                app:boxCornerRadiusTopStart="27dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="#FF0A2F69">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="18dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/rubik_bold"
+                android:text="password"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="27dp"
+                app:boxCornerRadiusBottomStart="27dp"
+                app:boxCornerRadiusTopEnd="27dp"
+                app:boxCornerRadiusTopStart="27dp"
+                app:boxBackgroundColor="@color/white"
+                app:passwordToggleEnabled="true"
+                app:boxStrokeColor="#FF0A2F69">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="18dp">
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/keep_me_signed_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                style="@style/CustomSwitch"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:fontFamily="@font/rubik_bold"
+                android:text="KEEP ME SIGNED IN"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_Log_in"
+            android:layout_width="163dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:clickable="true"
+            android:fontFamily="@font/rubik_bold"
+            android:text="log in"
+            android:textAllCaps="true"
+            android:textColor="#FF626262"
+            app:backgroundTint="@color/btnColor" />
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_marginTop="22dp"
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            app:dividerColor = "#FF8D8D8D"/>
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:clickable="true"
+            android:fontFamily="@font/rubik_bold"
+            android:text="Forgot password?"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_bold"
+                android:text="Didn`t have account?"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:clickable="true"
+                android:fontFamily="@font/rubik_bold"
+                android:text="Register"
+                android:textColor="#FF43CEB2"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
