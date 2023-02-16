@@ -15,7 +15,10 @@
         android:layout_marginTop="52dp"
         android:layout_marginRight="57dp"
         android:layout_marginLeft="57dp">
-
+        <ImageView
+            android:layout_width="169dp"
+            android:layout_height="169dp"
+            android:src="@drawable/student"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,12 +64,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="18dp">
-
-            <ImageView
-                android:layout_width="169dp"
-                android:layout_height="169dp"
-                android:src="@drawable/student" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -94,7 +91,6 @@
                     android:textColor="@color/black"
                     android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,22 +108,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
+                android:fontFamily="@font/rubik_bold"
                 android:text="KEEP ME SIGNED IN"
-                android:textSize="14dp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/rubik_bold"/>
+                android:textSize="14dp" />
         </LinearLayout>
         <Button
             android:id="@+id/btn_Log_in"
-            android:clickable="true"
             android:layout_width="163dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
+            android:clickable="true"
+            android:fontFamily="@font/rubik_bold"
             android:text="log in"
             android:textAllCaps="true"
             android:textColor="#FF626262"
-            android:fontFamily="@font/rubik_bold"
-            app:backgroundTint = "@color/btnColor" />
+            app:backgroundTint="@color/btnColor" />
         <com.google.android.material.divider.MaterialDivider
             android:layout_marginTop="22dp"
             android:layout_width="276dp"
@@ -138,11 +134,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
-            android:text="Forgot password?"
+            android:clickable="true"
             android:fontFamily="@font/rubik_bold"
-            android:textSize="14dp"
+            android:text="Forgot password?"
             android:textColor="@color/white"
-            android:clickable="true" />
+            android:textSize="14dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -151,20 +147,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Didn`t have account?"
                 android:fontFamily="@font/rubik_bold"
-                android:textSize="14dp"
-                android:textColor="@color/white" />
+                android:text="Didn`t have account?"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
             <TextView
                 android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="Register"
+                android:clickable="true"
                 android:fontFamily="@font/rubik_bold"
-                android:textSize="14dp"
+                android:text="Register"
                 android:textColor="#FF43CEB2"
-                android:clickable="true"/>
+                android:textSize="14dp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
