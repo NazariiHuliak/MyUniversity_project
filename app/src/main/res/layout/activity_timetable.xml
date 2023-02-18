@@ -67,16 +67,18 @@
                         android:layout_marginLeft="34dp"
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="17dp"
-                        android:background="none"
                         android:layout_alignParentRight="true">
+                        <!--android:background="none"-->
+
                         <RelativeLayout
                             android:layout_width="200dp"
                             android:layout_height="24dp"
 
 
                             android:layout_alignParentTop="true"
-                            android:background="none"
                             android:layout_alignParentLeft="true">
+                            <!--android:background="none"-->
+
                             <ImageView
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
@@ -354,9 +356,9 @@
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
             android:layout_alignParentTop="true"
-            android:layout_centerVertical="true"
-            android:background="none"
-            >
+            android:layout_centerVertical="true">
+            <!--android:background="none"-->
+
 
             <View
                 android:layout_gravity="center_vertical"
