@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/bg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="52dp"
+        android:layout_marginRight="57dp"
+        android:layout_marginLeft="57dp"
+
+        >
+        <ImageView
+
+            android:layout_width="169dp"
+            android:layout_height="169dp"
+            android:src="@drawable/student"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/rubik_bold"
+                android:text="username"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="27dp"
+                app:boxCornerRadiusBottomStart="27dp"
+                app:boxCornerRadiusTopEnd="27dp"
+                app:boxCornerRadiusTopStart="27dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="#FF0A2F69">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="17dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/rubik_bold"
+                android:text="email"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="27dp"
+                app:boxCornerRadiusBottomStart="27dp"
+                app:boxCornerRadiusTopEnd="27dp"
+                app:boxCornerRadiusTopStart="27dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="#FF0A2F69">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="17dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/rubik_bold"
+                android:text="group"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="27dp"
+                app:boxCornerRadiusBottomStart="27dp"
+                app:boxCornerRadiusTopEnd="27dp"
+                app:boxCornerRadiusTopStart="27dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="#FF0A2F69">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="17dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/rubik_bold"
+                android:text="password"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="27dp"
+                app:boxCornerRadiusBottomStart="27dp"
+                app:boxCornerRadiusTopEnd="27dp"
+                app:boxCornerRadiusTopStart="27dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="#FF0A2F69">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <Button
+                android:id="@+id/btn_Log_in"
+                android:clickable="true"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="sign in"
+                android:textAllCaps="true"
+                android:textColor="#FF626262"
+                android:fontFamily="@font/rubik_bold"
+                app:backgroundTint = "@color/btnColor" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
