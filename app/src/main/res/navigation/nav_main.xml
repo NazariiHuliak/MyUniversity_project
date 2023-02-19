@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.example.university_app."
+        android:name="com.example.university_app.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
     <fragment
