@@ -31,7 +31,8 @@
                 android:layout_alignEnd="@+id/main_p"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/photoprofile"
-                android:layout_marginEnd="5dp"/>
+                android:layout_marginEnd="5dp"
+                android:onClick="clickEvent"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -112,6 +113,7 @@
             </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/relative_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -298,4 +300,10 @@
                 android:background="@drawable/announcement_pic"/>
         </RelativeLayout>
     </LinearLayout>
+    <View
+        android:id="@+id/popup_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/popup_bg"
+        android:visibility="invisible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
