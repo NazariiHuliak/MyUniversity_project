@@ -148,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rubik_bold"
-                android:text="Didn`t have account?"
+                android:text="Don't have account?"
                 android:textColor="@color/white"
                 android:textSize="14dp" />
             <TextView
