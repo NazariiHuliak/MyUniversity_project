@@ -31,8 +31,7 @@
                 android:layout_alignEnd="@+id/main_p"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/photoprofile"
-                android:layout_marginEnd="5dp"
-                android:onClick="clickEvent"/>
+                android:layout_marginEnd="5dp"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
