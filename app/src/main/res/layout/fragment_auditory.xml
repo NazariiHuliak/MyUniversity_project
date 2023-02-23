@@ -3,12 +3,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AuditoryFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    tools:context=".AuditoryFragment"
+    android:background="@drawable/bg">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="AUDITORY" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="63dp"
+
+        android:layout_marginHorizontal="39dp">
+
+        <SearchView
+            android:id="@+id/idSV"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginHorizontal="13dp"
+            android:background="@drawable/map_search_round"
+            android:backgroundTint="@color/white"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@color/white"
+            android:queryHint="Номер аудиторії" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/map_list_round"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="63dp">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="490dp"
+
+
+                tools:listitem="@layout/list_item_aud">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+    </LinearLayout>
+
+
 
 </FrameLayout>
