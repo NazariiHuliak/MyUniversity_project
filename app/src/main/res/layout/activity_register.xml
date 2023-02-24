@@ -158,12 +158,12 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
             <Button
-                android:id="@+id/btn_Log_in"
+                android:id="@+id/btn_Sign_up"
                 android:clickable="true"
                 android:layout_width="163dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="sign in"
+                android:text="sign up"
                 android:textAllCaps="true"
                 android:textColor="#FF626262"
                 android:fontFamily="@font/rubik_bold"
