@@ -83,7 +83,7 @@
                 android:orientation="horizontal"
                 android:paddingHorizontal="15dp"
                 android:gravity="center_vertical"
-                >
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:id="@+id/lesson"
