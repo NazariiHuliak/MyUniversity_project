@@ -89,7 +89,7 @@
                     android:id="@+id/lesson"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/book"/>
+                    android:background="@drawable/book_"/>
 
                 <TextView
 
