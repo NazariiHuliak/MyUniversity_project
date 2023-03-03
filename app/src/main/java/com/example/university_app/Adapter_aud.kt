@@ -10,7 +10,6 @@ import com.google.android.material.imageview.ShapeableImageView
 class Adapter_aud(private val audList : ArrayList<Audiences>) :
     RecyclerView.Adapter<Adapter_aud.View_Holder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): View_Holder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item_aud,parent,false)
         return View_Holder(itemView)
