@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "599460610772",
+    "project_id": "noda-21967",
+    "storage_bucket": "noda-21967.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599460610772:android:657deec9c9292eb55cf141",
+        "android_client_info": {
+          "package_name": "com.example.university_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599460610772-2ck9eri3bddrj7uim9u6t2lvm2694tfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2hyL503ArGjSp865zX8YvuaoYAftL__U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599460610772-2ck9eri3bddrj7uim9u6t2lvm2694tfa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
