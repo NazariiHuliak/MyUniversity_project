@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
-import androidx.navigation.fragment.findNavController
 
 class InfoFragment : Fragment() {
     override fun onCreateView(
