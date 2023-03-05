@@ -1,8 +1,5 @@
 package com.example.university_app
 
-import android.content.Context
-import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -23,6 +20,5 @@ class MainActivity : AppCompatActivity() {
 
         navController = Navigation.findNavController(this, R.id.activiti_main_nav_host_fragment)
         setupWithNavController(binding.bottomNavigationView, navController)
-
     }
 }
