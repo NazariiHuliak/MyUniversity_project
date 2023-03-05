@@ -65,6 +65,8 @@ class Register_Activity : AppCompatActivity() {
                                     ).show()
                                 }
                             }
+                        val intent = Intent(this, Login_Activity::class.java)
+                        startActivity(intent)
                     } else {
                         // Реєстрація не вдалась
                         Toast.makeText(
@@ -72,29 +74,7 @@ class Register_Activity : AppCompatActivity() {
                             "Помилка реєстрації: ${task.exception?.message}",
                             Toast.LENGTH_SHORT
                         ).show()
-                        val user = FirebaseAuth.getInstance().currentUser
-                        user?.sendEmailVerification()
-                            ?.addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    // Лист для підтвердження пошти надіслано успішно
-                                    Toast.makeText(
-                                        this,
-                                        "Лист для підтвердження пошти надіслано",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else {
-                                    // Помилка під час відправки листа для підтвердження пошти
-                                    Toast.makeText(
-                                        this,
-                                        "Помилка!",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
                     }
-
-                    val intent = Intent(this, Login_Activity::class.java)
-                    startActivity(intent)
                 }
         }
     }
