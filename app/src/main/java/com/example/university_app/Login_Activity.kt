@@ -18,7 +18,6 @@ class Login_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
         auth = Firebase.auth
 
         val registerText: TextView = findViewById(R.id.register)
@@ -33,7 +32,6 @@ class Login_Activity : AppCompatActivity() {
         signInButton.setOnClickListener {
             performLogin()
         }
-
     }
 
     private fun performLogin() {
