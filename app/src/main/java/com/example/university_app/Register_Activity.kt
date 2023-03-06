@@ -9,22 +9,33 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import java.util.*
 import javax.mail.*
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
 class Register_Activity : AppCompatActivity() {
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+    private lateinit var usersRef: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        firebaseAuth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+        usersRef = database.getReference("users")
 
         val signUpButton = findViewById<Button>(R.id.btn_Sign_up)
         signUpButton.setOnClickListener {
@@ -37,18 +48,33 @@ class Register_Activity : AppCompatActivity() {
             val email = emailEditText.text.toString()
             val group = groupEditText.text.toString()
             val password = passwordEditText.text.toString()
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+
+            firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Реєстрація успішна
-                        val user = FirebaseAuth.getInstance().currentUser
+                        val user = firebaseAuth.currentUser
+                        val uid = user!!.uid
+
+                        // Збереження інформації про користувача у Realtime Database
+                        val userData = hashMapOf(
+                            "nickname" to username,
+                            "group" to group
+                        )
+                        usersRef.child(uid).setValue(userData)
+
                         Toast.makeText(
                             this,
-                            "Реєстрація успішна: ${user?.email}",
+                            "Реєстрація успішна: ${user.email}",
                             Toast.LENGTH_SHORT
                         ).show()
-                        user?.sendEmailVerification()
-                            ?.addOnCompleteListener { task ->
+                        usersRef.child(uid).setValue(userData).addOnSuccessListener {
+                            Log.d("RegisterActivity", "User added to database")
+                        }.addOnFailureListener {
+                            Log.e("RegisterActivity", "Error adding user to database", it)
+                        }
+                        user.sendEmailVerification()
+                            .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
                                     // Лист для підтвердження пошти надіслано успішно
                                     Toast.makeText(
@@ -244,3 +270,4 @@ class Register_Activity : AppCompatActivity() {
 //    }
 //}
 //123
+//vagis95546@vootin.com
