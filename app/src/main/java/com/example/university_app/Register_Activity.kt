@@ -49,62 +49,72 @@ class Register_Activity : AppCompatActivity() {
             val group = groupEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Реєстрація успішна
-                        val user = firebaseAuth.currentUser
-                        val uid = user!!.uid
+            if (!isValidGroup(group)){
+                groupEditText.error = "Введіть коректну групу!"
+                groupEditText.requestFocus()
+            }
+            else {
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Реєстрація успішна
+                            val user = firebaseAuth.currentUser
+                            val uid = user!!.uid
+                            // Збереження інформації про користувача у Realtime Database
+                            val userData = hashMapOf(
+                                "nickname" to username,
+                                "group" to group
+                            )
+                            usersRef.child(uid).setValue(userData)
 
-                        // Збереження інформації про користувача у Realtime Database
-                        val userData = hashMapOf(
-                            "nickname" to username,
-                            "group" to group
-                        )
-                        usersRef.child(uid).setValue(userData)
-
-                        Toast.makeText(
-                            this,
-                            "Реєстрація успішна: ${user.email}",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        usersRef.child(uid).setValue(userData).addOnSuccessListener {
-                            Log.d("RegisterActivity", "User added to database")
-                        }.addOnFailureListener {
-                            Log.e("RegisterActivity", "Error adding user to database", it)
-                        }
-                        user.sendEmailVerification()
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    // Лист для підтвердження пошти надіслано успішно
-                                    Toast.makeText(
-                                        this,
-                                        "Лист для підтвердження пошти надіслано",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else {
-                                    // Помилка під час відправки листа для підтвердження пошти
-                                    Toast.makeText(
-                                        this,
-                                        "Помилка!",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
+                            Toast.makeText(
+                                this,
+                                "Реєстрація успішна: ${user.email}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            usersRef.child(uid).setValue(userData).addOnSuccessListener {
+                                Log.d("RegisterActivity", "User added to database")
+                            }.addOnFailureListener {
+                                Log.e("RegisterActivity", "Error adding user to database", it)
                             }
-                        val intent = Intent(this, Login_Activity::class.java)
-                        startActivity(intent)
-                    } else {
-                        // Реєстрація не вдалась
-                        Toast.makeText(
-                            this,
-                            "Помилка реєстрації: ${task.exception?.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                            user.sendEmailVerification()
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        // Лист для підтвердження пошти надіслано успішно
+                                        Toast.makeText(
+                                            this,
+                                            "Лист для підтвердження пошти надіслано",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    } else {
+                                        // Помилка під час відправки листа для підтвердження пошти
+                                        Toast.makeText(
+                                            this,
+                                            "Помилка!",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }
+                            val intent = Intent(this, Login_Activity::class.java)
+                            startActivity(intent)
+                        } else {
+                            // Реєстрація не вдалась
+                            Toast.makeText(
+                                this,
+                                "Помилка реєстрації: ${task.exception?.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                }
+            }
         }
     }
 }
+    fun isValidGroup(input: String): Boolean {
+        val pattern = Regex("[A-ZА-ЯІЇЄ]{3}-\\d{2}")
+        return pattern.matches(input)
+    }
+
 //            if(!isValidUsername(username)){
 //                usernameEditText.error = "Ім'я користувача не може бути порожнім"
 //                usernameEditText.requestFocus()
