@@ -1,63 +1,43 @@
 package com.example.university_app.onboarding.days
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.example.university_app.DatabaseAccess
 import com.example.university_app.LessonModel
 import com.example.university_app.R
+import com.example.university_app.TimetableFragment
 
 class TuesdayFragment : Fragment() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_tuesday, container, false)
 
         var databaseAccess: DatabaseAccess = DatabaseAccess.getInstance(requireContext())
-
         databaseAccess.open()
+        var type = databaseAccess.getTypeOfWeek()
         var dataList: MutableList<LessonModel> = databaseAccess.getData("Вівторок")
         databaseAccess.close()
 
-        var time_List: MutableList<Int> = mutableListOf(
-            R.id.time_text_id_1,
-            R.id.time_text_id_2,
-            R.id.time_text_id_3,
-            R.id.time_text_id_4
-        )
-        var subject_List: MutableList<Int> = mutableListOf(
-            R.id.subject_text_id_1,
-            R.id.subject_text_id_2,
-            R.id.subject_text_id_3,
-            R.id.subject_text_id_4
-        )
-        var auditory_List: MutableList<Int> = mutableListOf(
-            R.id.auditory_text_id_1,
-            R.id.auditory_text_id_2,
-            R.id.auditory_text_id_3,
-            R.id.auditory_text_id_4
-        )
-        var tutor_List: MutableList<Int> = mutableListOf(
-            R.id.tutor_text_id_1,
-            R.id.tutor_text_id_2,
-            R.id.tutor_text_id_3,
-            R.id.tutor_text_id_4
-        )
-        var iterator = 0
-        for(i in dataList){
-            view.findViewById<TextView>(time_List[iterator]).text = i.tutor
-            view.findViewById<TextView>(subject_List[iterator]).text = i.subject
-            view.findViewById<TextView>(auditory_List[iterator]).text = i.auditory.toString()
-            view.findViewById<TextView>(tutor_List[iterator]).text = i.starttime
-            iterator++
+        var objectsList = TimetableFragment.getObjectLists()
+
+        for((iterator, i) in dataList.withIndex()){
+            if(i.type == type || i.type == 0){
+                view.findViewById<TextView>(objectsList[0][iterator]).text = i.tutor
+                view.findViewById<TextView>(objectsList[1][iterator]).text = i.subject
+                view.findViewById<TextView>(objectsList[2][iterator]).text = i.auditory.toString()
+                view.findViewById<TextView>(objectsList[3][iterator]).text = i.starttime
+            }
         }
         return view
     }
-
 }

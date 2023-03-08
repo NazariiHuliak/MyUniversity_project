@@ -50,7 +50,7 @@
 
                     <TextView
                         android:id="@+id/time_text_id_1"
-                        android:layout_width="40dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="27dp"
                         android:fontFamily="@font/rubik_bold"
@@ -152,7 +152,7 @@
 
                     <TextView
                         android:id="@+id/time_text_id_2"
-                        android:layout_width="40dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="27dp"
                         android:fontFamily="@font/rubik_bold"
@@ -255,7 +255,7 @@
 
                     <TextView
                         android:id="@+id/time_text_id_3"
-                        android:layout_width="40dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="27dp"
                         android:fontFamily="@font/rubik_bold"
@@ -358,7 +358,7 @@
 
                     <TextView
                         android:id="@+id/time_text_id_4"
-                        android:layout_width="40dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="27dp"
                         android:fontFamily="@font/rubik_bold"
