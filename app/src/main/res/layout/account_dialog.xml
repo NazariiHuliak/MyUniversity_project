@@ -20,13 +20,14 @@
                     android:layout_marginTop="7dp"
                     android:layout_marginRight="20dp"/>
                 <TextView
+                    android:id="@+id/nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/popup_window"
                     android:layout_alignRight="@+id/popup_window"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="15dp"
-                    android:text="Сі Ян Цук Олексій"
+                    android:text="Loading..."
                     android:fontFamily="@font/rubik_bold"
                     android:textSize="18dp"
                     />
@@ -48,9 +49,10 @@
                     android:background="@drawable/group_icon"
                     />
                 <TextView
+                    android:id="@+id/group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PMI-24"
+                    android:text="Loading..."
                     android:layout_alignStart="@+id/group_pic"
                     android:layout_alignTop="@+id/group_pic"
                     android:textColor="@color/black"
