@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AuditoryFragment"
     android:background="@drawable/bg">
     <LinearLayout
@@ -14,16 +15,26 @@
 
         android:layout_marginHorizontal="39dp">
 
-        <SearchView
-            android:id="@+id/idSV"
+        <com.google.android.material.textfield.TextInputLayout
+
             android:layout_width="match_parent"
-            android:layout_height="39dp"
+            android:layout_height="wrap_content"
+            app:startIconTint = "@color/black"
+            app:startIconDrawable="@drawable/search_icon"
             android:layout_marginHorizontal="13dp"
-            android:background="@drawable/map_search_round"
-            android:backgroundTint="@color/white"
-            android:iconifiedByDefault="false"
-            android:queryBackground="@color/white"
-            android:queryHint="Номер аудиторії" />
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/serach_aud"
+
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:background="@drawable/map_search_round"
+                android:backgroundTint="@color/white"
+                android:padding="10dp"
+                android:text="Номер аудиторії" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
