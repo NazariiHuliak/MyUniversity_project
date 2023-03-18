@@ -91,18 +91,21 @@
                     android:layout_marginTop="198dp"
                     android:background="@drawable/log_out_icon"
                     />
+
                 <TextView
+                    android:id="@+id/sign_out_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Вийти"
                     android:layout_alignStart="@+id/sign_out_pic"
                     android:layout_alignTop="@+id/sign_out_pic"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="70dp"
+                    android:layout_marginStart="69dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/rubik_bold"
-                    android:textSize="18dp"
-                    android:layout_marginTop="3.5dp"
-                    />
+                    android:text="Вийти"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:clickable="true"/>
             </RelativeLayout>
 
         </LinearLayout>

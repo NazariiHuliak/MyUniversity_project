@@ -38,7 +38,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/rubik_bold"
-                android:text="username"
+                android:text="email"
                 android:textAllCaps="true"
                 android:textColor="@color/white" />
             <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +51,7 @@
                 app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="#FF0A2F69">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/username"
+                    android:id="@+id/email_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
@@ -102,7 +102,8 @@
                 android:id="@+id/keep_me_signed_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
+
                 style="@style/CustomSwitch"/>
             <TextView
                 android:layout_width="match_parent"
