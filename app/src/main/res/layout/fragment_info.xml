@@ -33,25 +33,41 @@
             android:id="@+id/info_location"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/rubik_bold"
-            android:text="вул. Університетська 1, м. Львів, 79000"
+            android:text="Адреса: вул. Університетська 1, м. Львів, 79000"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/info_phone"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/rubik_bold"
+            android:text="Телефон: (+38 032) 260-34-02"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/info_email"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/rubik_bold"
+            android:text="Пошта: zag_kan@lnu.edu.ua"
             android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/info_site"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/rubik_bold"
-            android:text="webmaster@lnu.edu.ua"
+            android:text="Сайт: lnu.edu.ua"
             android:textColor="@color/white" />
 
         <Button
             android:id="@+id/contact_button"
             android:layout_width="337dp"
             android:layout_height="50dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:drawableEnd="@drawable/button_directionn"
             android:fontFamily="@font/rubik_bold"
 
@@ -60,15 +76,15 @@
             android:textSize="20dp"
             app:backgroundTint="@color/white" />
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="30dp">
             <ImageButton
                 android:id="@+id/map_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/mapfaculty" />
+                android:background="@drawable/main_map" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
