@@ -23,8 +23,7 @@
             android:backgroundTint="@color/white"
             android:iconifiedByDefault="false"
             android:queryBackground="@color/white"
-            android:queryHint="Номер аудиторії"
-            />
+            android:queryHint="Номер аудиторії"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
