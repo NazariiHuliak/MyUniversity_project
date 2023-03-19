@@ -1,28 +1,15 @@
 package com.example.university_app
 
-import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
-import java.util.*
-import javax.mail.*
-import javax.mail.internet.InternetAddress
-import javax.mail.internet.MimeMessage
 
 class Register_Activity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
@@ -39,7 +26,7 @@ class Register_Activity : AppCompatActivity() {
 
         val signUpButton = findViewById<Button>(R.id.btn_Sign_up)
         signUpButton.setOnClickListener {
-            val usernameEditText = findViewById<TextInputEditText>(R.id.username)
+            val usernameEditText = findViewById<TextInputEditText>(R.id.email_login)
             val emailEditText = findViewById<TextInputEditText>(R.id.email)
             val groupEditText = findViewById<TextInputEditText>(R.id.group)
             val passwordEditText = findViewById<TextInputEditText>(R.id.password)
