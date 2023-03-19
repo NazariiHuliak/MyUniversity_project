@@ -144,7 +144,7 @@ class AuditoryFragment : Fragment() {
                     }
                 }
                 if(tempArraylist.isEmpty()){
-                    tempArraylist.add(Audiences(R.drawable.book,"Збігів не знайдено"))
+                    tempArraylist.add(Audiences(R.drawable.sad,"Збігів не знайдено"))
                 }
                 newRecyclerView.adapter = AuditoryAdapter(tempArraylist , dataList)
             }
