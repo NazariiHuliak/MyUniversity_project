@@ -48,10 +48,10 @@ class DatabaseAccessFacult private constructor(context: Context) {
                 val phone: String = cursor.getString(cursor.getColumnIndex("phone"))
                 val email: String = cursor.getString(cursor.getColumnIndex("email"))
                 val site: String = cursor.getString(cursor.getColumnIndex("site"))
-                val logoID: Int = cursor.getInt(cursor.getColumnIndex("logoID"))
-                val mapID: Int = cursor.getInt(cursor.getColumnIndex("mapID"))
+                val logo: String = cursor.getString(cursor.getColumnIndex("logo"))
+                val map: String = cursor.getString(cursor.getColumnIndex("map"))
                 val url: String = cursor.getString(cursor.getColumnIndex("mapURL"))
-                dataList.add(FacultiesModel(id, name, adress, phone, email, site,logoID,mapID,url))
+                dataList.add(FacultiesModel(id, name, adress, phone, email, site,logo,map,url))
             } while (cursor.moveToNext())
         }
         cursor.close()

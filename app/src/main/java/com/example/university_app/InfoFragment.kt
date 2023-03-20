@@ -2,7 +2,9 @@ package com.example.university_app
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -20,18 +22,22 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.browser.customtabs.CustomTabsClient.getPackageName
+import androidx.core.graphics.drawable.toIcon
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileInputStream
 
 class InfoFragment : Fragment() {
     private lateinit var newRecyclerView: RecyclerView
     private lateinit var newArraylist : MutableList<FacultiesModel>
     private lateinit var tempArraylist : MutableList<FacultiesModel>
-    lateinit var imageid : MutableList<Int>
-    lateinit var heading : MutableList<String>
-    @SuppressLint("MissingInflatedId", "CutPasteId")
+
+    @SuppressLint("MissingInflatedId", "CutPasteId", "ResourceType")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,20 +69,12 @@ class InfoFragment : Fragment() {
             val contact_dialog = Dialog(context)
             contact_dialog.setContentView(dialogBining)
             var dialog: Dialog? = contact_dialog
+            var dialog_view: View? = dialogBining
             contact_dialog.setCancelable(true)
             contact_dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-            imageid = mutableListOf<Int>()
-            heading = mutableListOf<String>()
-            for(i in dataList){
-                imageid.add(i.logoID)
-            }
-            for(i in dataList){
-                heading.add(i.name)
-            }
 
             val input = dialogBining.findViewById<TextInputEditText>(R.id.input_2_end)
-//            Log.d("type","${input::class.simpleName}")
             input.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
                 if (hasFocus) {
                     input.setText("")
@@ -99,7 +97,7 @@ class InfoFragment : Fragment() {
             val cancel_btn = contact_dialog.findViewById<ImageButton>(R.id.button_close)
             cancel_btn.setOnClickListener {
                 contact_dialog.dismiss()
-                root_view.findViewById<ImageView>(R.id.info_logo).setImageResource(R.drawable.logofaculty)
+                root_view.findViewById<ImageView>(R.id.info_logo).setImageResource(getResources().getIdentifier("logofaculty","drawable",context.getPackageName()))
                 root_view.findViewById<TextView>(R.id.info_name).setText("© Львівський національний університет імені Івана Франка")
                 root_view.findViewById<TextView>(R.id.info_location).setText("Адреса: вул. Університетська 1, м. Львів, 79000")
                 root_view.findViewById<TextView>(R.id.info_phone).setText("Телефон: (+38 032) 260-34-02")
@@ -143,7 +141,7 @@ class InfoFragment : Fragment() {
                     }
                 }
                 if(tempArraylist.isEmpty()){
-                    tempArraylist.add(FacultiesModel(logoID=R.drawable.sad,name="Збігів не знайдено"))
+                    tempArraylist.add(FacultiesModel(logo="sad",name="Збігів не знайдено"))
                 }
                 newRecyclerView.adapter = Adapter_facult(tempArraylist,dialog,main_view)
             }
