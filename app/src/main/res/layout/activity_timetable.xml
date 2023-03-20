@@ -64,8 +64,7 @@
                     android:layout_height="110dp"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/layout_bg"
-                    android:backgroundTint="@color/white"
-                    \>
+                    android:backgroundTint="@color/white">
 
                     <RelativeLayout
                         android:layout_width="200dp"
