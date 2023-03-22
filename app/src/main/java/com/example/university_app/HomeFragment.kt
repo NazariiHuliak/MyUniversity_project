@@ -107,6 +107,5 @@ class HomeFragment : Fragment() {
             myView.visibility = View.VISIBLE
             showPopupWindow(button)
         }
-
     }
 }

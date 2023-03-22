@@ -1,5 +1,6 @@
 package com.example.university_app
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -37,10 +38,14 @@ class DatabaseAccess private constructor(context: Context) {
         database.close()
     }
 
-    fun getData(day_: String): MutableList<LessonModel> {
+    @SuppressLint("Range")
+    fun getData(day_: String, group: String): MutableList<LessonModel> {
+        if(group.isEmpty()){
+           return mutableListOf()
+        }
         var dataList: MutableList<LessonModel> = mutableListOf()
-        val cursor: Cursor = database.rawQuery("SELECT * FROM ownlessons", null) //TODO:change "ownlessons" to "$ goup"
-
+        var group_ = group.replace("-", "")
+        val cursor: Cursor = database.rawQuery("SELECT * FROM $group_", null)
         if (cursor.moveToFirst()) {
             do {
                 val id: Int = cursor.getInt(cursor.getColumnIndex("id"))
@@ -60,6 +65,7 @@ class DatabaseAccess private constructor(context: Context) {
         cursor.close()
         return dataList
     }
+    @SuppressLint("Range")
     private fun getListOfTypes():MutableList<MutableList<String>>{
         var dataList: MutableList<MutableList<String>> = mutableListOf()
         val cursor: Cursor = database.rawQuery("SELECT * FROM weeksType", null)

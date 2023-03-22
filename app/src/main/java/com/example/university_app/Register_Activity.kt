@@ -98,7 +98,7 @@ class Register_Activity : AppCompatActivity() {
     }
 }
     fun isValidGroup(input: String): Boolean {
-        val pattern = Regex("[A-ZА-ЯІЇЄ]{3}-\\d{2}")
+        val pattern = Regex("[А-ЯІЇЄ]{3}-\\d{2}")
         return pattern.matches(input)
     }
 
