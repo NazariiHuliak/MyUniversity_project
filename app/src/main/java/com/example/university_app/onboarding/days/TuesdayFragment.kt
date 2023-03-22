@@ -63,10 +63,10 @@ class TuesdayFragment : Fragment() {
             if (i.type == type || i.type == 0) {
                 view.findViewById<TextView>(objectsList[0][iterator]).text = i.tutor
                 view.findViewById<TextView>(objectsList[1][iterator]).text = i.subject
-                if(i.auditory == 0){
+                if(i.auditory == "0"){
                     view.findViewById<TextView>(objectsList[2][iterator]).text = "Невідомо"
                 } else {
-                    view.findViewById<TextView>(objectsList[2][iterator]).text = i.auditory.toString()
+                    view.findViewById<TextView>(objectsList[2][iterator]).text = i.auditory
                 }
                 view.findViewById<TextView>(objectsList[3][iterator]).text = i.starttime
             }
