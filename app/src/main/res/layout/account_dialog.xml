@@ -71,6 +71,7 @@
                     android:background="@drawable/password_icon"
                     />
                 <TextView
+                    android:id="@+id/new_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Змінити пароль"
@@ -81,6 +82,7 @@
                     android:fontFamily="@font/rubik_bold"
                     android:textSize="18dp"
                     android:layout_marginTop="3.5dp"
+                    android:clickable="true"
                     />
                 <View
                     android:id="@+id/sign_out_pic"

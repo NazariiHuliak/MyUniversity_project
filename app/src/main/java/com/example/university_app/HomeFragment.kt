@@ -1,18 +1,18 @@
 package com.example.university_app
 
+import android.app.AlertDialog
+import android.content.ContentValues
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.InputType
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.PopupWindow
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.university_app.databinding.FragmentHomeBinding
 import com.google.android.material.materialswitch.MaterialSwitch
@@ -87,6 +87,41 @@ class HomeFragment : Fragment() {
                 myView.visibility = View.INVISIBLE
             }
 
+            val newPasswordButton = popupView.findViewById<TextView>(R.id.new_password)
+            newPasswordButton.setOnClickListener {
+                val builder = AlertDialog.Builder(context)
+                builder.setTitle("Змінити пароль")
+
+                val inputLayout = LinearLayout(context)
+                inputLayout.orientation = LinearLayout.VERTICAL
+
+                val inputNewPassword = EditText(context)
+                inputNewPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                inputNewPassword.hint = "Новий пароль"
+
+                val inputConfirmPassword = EditText(context)
+                inputConfirmPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                inputConfirmPassword.hint = "Підтвердити пароль"
+
+                inputLayout.addView(inputNewPassword)
+                inputLayout.addView(inputConfirmPassword)
+                builder.setView(inputLayout)
+                builder.setPositiveButton("Ok") { dialog, which ->
+                    val newPassword = inputNewPassword.text.toString()
+                    val confirmPassword = inputConfirmPassword.text.toString()
+
+                    if (newPassword == confirmPassword) {
+                        // виклик функції зміни пароля
+                        changePassword(newPassword)
+                    } else {
+                        Toast.makeText(context, "Паролі не співпадають", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                builder.setNegativeButton("Скасувати") { dialog, which -> dialog.cancel() }
+                builder.show()
+            }
+
+
             val logoutButton = popupView.findViewById<TextView>(R.id.sign_out_btn)
             logoutButton.setOnClickListener {
                 FirebaseAuth.getInstance().signOut()
@@ -107,5 +142,20 @@ class HomeFragment : Fragment() {
             myView.visibility = View.VISIBLE
             showPopupWindow(button)
         }
+    }
+
+    fun changePassword(newPassword_: String){
+        val user = FirebaseAuth.getInstance().currentUser
+
+        val newPassword = newPassword_
+
+        user?.updatePassword(newPassword)
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(ContentValues.TAG, "Password updated")
+                } else {
+                    Log.e(ContentValues.TAG, "Error updating password", task.exception)
+                }
+            }
     }
 }
