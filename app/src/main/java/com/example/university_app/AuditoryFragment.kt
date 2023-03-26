@@ -53,7 +53,7 @@ class AuditoryFragment : Fragment() {
         val calendar = Calendar.getInstance()
         val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
         for (i in dataList){
-            heading.add(i.audiense);
+            heading.add(i.audience);
 
             val currentTime = Calendar.getInstance().timeInMillis
 
@@ -103,13 +103,13 @@ class AuditoryFragment : Fragment() {
 
     private fun getDayOfWeekString(dayOfWeek: Int): String {
     return when (dayOfWeek) {
-        Calendar.SUNDAY -> "Sunday"
-        Calendar.MONDAY -> "Monday"
-        Calendar.TUESDAY -> "Tuesday"
-        Calendar.WEDNESDAY -> "Wednesday"
-        Calendar.THURSDAY -> "Thursday"
-        Calendar.FRIDAY -> "Friday"
-        Calendar.SATURDAY -> "Saturday"
+        Calendar.SUNDAY -> "Неділя"
+        Calendar.MONDAY -> "Понеділок"
+        Calendar.TUESDAY -> "Вівторок"
+        Calendar.WEDNESDAY -> "Середа"
+        Calendar.THURSDAY -> "Четвер"
+        Calendar.FRIDAY -> "П'ятниця"
+        Calendar.SATURDAY -> "Субота"
         else -> throw IllegalArgumentException("Invalid day of week: $dayOfWeek")
     }
 }
