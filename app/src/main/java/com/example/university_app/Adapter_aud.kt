@@ -107,8 +107,8 @@ class AuditoryAdapter(private val audList: List<Audiences>, private val dataList
 
 //            val lessonText = "${dataList[adapterPosition].start_lesson} - ${dataList[adapterPosition].end_lesson}"
 //            dialog.findViewById<TextView>(R.id.info_time).text = lessonText
-            dialog.findViewById<TextView>(R.id.info_subject).setText(dataList[adapterPosition].lesson)
-            dialog.findViewById<TextView>(R.id.info_teacher).setText(dataList[adapterPosition].teacher)
+            dialog.findViewById<TextView>(R.id.info_subject).setText(dataList[adapterPosition].subject)
+            dialog.findViewById<TextView>(R.id.info_teacher).setText(dataList[adapterPosition].tutor)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             val auditoryNumberTextView = dialog.findViewById<TextView>(R.id.room)
             auditoryNumberTextView.text = auditory.heading.toString()
@@ -116,13 +116,13 @@ class AuditoryAdapter(private val audList: List<Audiences>, private val dataList
         }
         private fun getDayOfWeekString(dayOfWeek: Int): String {
             return when (dayOfWeek) {
-                Calendar.SUNDAY -> "Sunday"
-                Calendar.MONDAY -> "Monday"
-                Calendar.TUESDAY -> "Tuesday"
-                Calendar.WEDNESDAY -> "Wednesday"
-                Calendar.THURSDAY -> "Thursday"
-                Calendar.FRIDAY -> "Friday"
-                Calendar.SATURDAY -> "Saturday"
+                Calendar.SUNDAY -> "Неділя"
+                Calendar.MONDAY -> "Понеділок"
+                Calendar.TUESDAY -> "Вівторок"
+                Calendar.WEDNESDAY -> "Середа"
+                Calendar.THURSDAY -> "Четвер"
+                Calendar.FRIDAY -> "П'ятниця"
+                Calendar.SATURDAY -> "Субота"
                 else -> throw IllegalArgumentException("Invalid day of week: $dayOfWeek")
             }
 

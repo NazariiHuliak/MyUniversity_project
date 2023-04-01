@@ -5,7 +5,7 @@ data class LessonModel(
     var subject: String = "",
     var tutor: String = "",
     var starttime: String = "",
-    var auditory: Int = 0,
+    var auditory: String = "",
     var day: String = "",
     var type: Int = 0
 )

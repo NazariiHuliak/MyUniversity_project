@@ -55,6 +55,11 @@ class Login_Activity : AppCompatActivity() {
         signInButton.setOnClickListener {
             performLogin()
         }
+        val registerText: TextView = findViewById(R.id.register)
+        registerText.setOnClickListener {
+            val intent = Intent(this, Register_Activity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun performLogin() {

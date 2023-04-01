@@ -31,7 +31,7 @@
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/rubik_bold"
                 android:paddingTop="10dp"
-                android:text="Wednesday"
+                android:text="Середа"
                 android:textColor="@color/black"
                 android:textSize="24dp" />
         </RelativeLayout>
@@ -51,7 +51,7 @@
 
                 <TextView
                     android:id="@+id/time_text_id_1"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="27dp"
                     android:fontFamily="@font/rubik_bold"
@@ -63,7 +63,8 @@
                     android:layout_width="259dp"
                     android:layout_height="110dp"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/layout_bg">
+                    android:background="@drawable/layout_bg"
+                    android:backgroundTint="@color/white">
 
                     <RelativeLayout
                         android:layout_width="200dp"
@@ -80,6 +81,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true">
                             <ImageView
+                                android:id="@+id/ico_1_1_1"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -102,6 +104,7 @@
                             android:layout_marginTop="10dp">
 
                             <ImageView
+                                android:id="@+id/ico_1_1_2"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -125,6 +128,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/white">
                             <ImageView
+                                android:id="@+id/ico_1_1_3"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -153,7 +157,7 @@
 
                 <TextView
                     android:id="@+id/time_text_id_2"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="27dp"
                     android:fontFamily="@font/rubik_bold"
@@ -165,7 +169,8 @@
                     android:layout_width="259dp"
                     android:layout_height="110dp"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/layout_bg">
+                    android:background="@drawable/layout_bg"
+                    android:backgroundTint="@color/white">
 
                     <RelativeLayout
                         android:layout_width="200dp"
@@ -183,6 +188,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true">
                             <ImageView
+                                android:id="@+id/ico_1_2_1"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -205,6 +211,7 @@
                             android:layout_marginTop="10dp">
 
                             <ImageView
+                                android:id="@+id/ico_1_2_2"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -228,6 +235,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/white">
                             <ImageView
+                                android:id="@+id/ico_1_2_3"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -256,7 +264,7 @@
 
                 <TextView
                     android:id="@+id/time_text_id_3"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="27dp"
                     android:fontFamily="@font/rubik_bold"
@@ -268,7 +276,8 @@
                     android:layout_width="259dp"
                     android:layout_height="110dp"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/layout_bg">
+                    android:background="@drawable/layout_bg"
+                    android:backgroundTint="@color/white">
 
                     <RelativeLayout
                         android:layout_width="200dp"
@@ -286,6 +295,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true">
                             <ImageView
+                                android:id="@+id/ico_1_3_1"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -308,6 +318,7 @@
                             android:layout_marginTop="10dp">
 
                             <ImageView
+                                android:id="@+id/ico_1_3_2"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -331,6 +342,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/white">
                             <ImageView
+                                android:id="@+id/ico_1_3_3"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -359,7 +371,7 @@
 
                 <TextView
                     android:id="@+id/time_text_id_4"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="27dp"
                     android:fontFamily="@font/rubik_bold"
@@ -371,7 +383,8 @@
                     android:layout_width="259dp"
                     android:layout_height="110dp"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/layout_bg">
+                    android:background="@drawable/layout_bg"
+                    android:backgroundTint="@color/white">
 
                     <RelativeLayout
                         android:layout_width="200dp"
@@ -389,6 +402,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true">
                             <ImageView
+                                android:id="@+id/ico_1_4_1"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -411,6 +425,7 @@
                             android:layout_marginTop="10dp">
 
                             <ImageView
+                                android:id="@+id/ico_1_4_2"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
@@ -434,6 +449,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/white">
                             <ImageView
+                                android:id="@+id/ico_1_4_3"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentLeft="true"
