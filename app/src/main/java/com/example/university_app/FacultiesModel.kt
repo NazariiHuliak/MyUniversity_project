@@ -7,7 +7,7 @@ data class FacultiesModel(
     var phone: String = "",
     var email: String = "",
     var site: String = "",
-    var logoID: Int = 0,
-    var mapID: Int = 0,
+    var logo: String = "",
+    var map: String = "",
     var mapURL: String = ""
 )
