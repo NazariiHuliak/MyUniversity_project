@@ -111,7 +111,7 @@ class InfoFragment : Fragment() {
                     startActivity(intent)
                 }
                 root_view.findViewById<ImageButton>(R.id.map_button).setOnClickListener {
-                    val url = "https://www.google.com/maps/place/%D0%9B%D1%8C%D0%B2%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9+%D0%BD%D0%B0%D1%86%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9+%D1%83%D0%BD%D1%96%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82+%D1%96%D0%BC%D0%B5%D0%BD%D1%96+%D0%86%D0%B2%D0%B0%D0%BD%D0%B0+%D0%A4%D1%80%D0%B0%D0%BD%D0%BA%D0%B0/@49.840348,24.020108,17z/data=!3m1!4b1!4m6!3m5!1s0x473add717532cff9:0x1ea627f45b408179!8m2!3d49.840348!4d24.0222967!16zL20vMDZfc2dr"
+                    val url = "https://lnu.edu.ua/"
                     val intent = Intent(Intent.ACTION_VIEW)
                     intent.data = Uri.parse(url)
                     startActivity(intent)
