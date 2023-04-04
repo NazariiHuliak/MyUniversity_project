@@ -60,7 +60,7 @@ class DatabaseAccess private constructor(context: Context) {
                     break
                 }
                 if(day == day_ && group_ == group){
-                    dataList.add(LessonModel(id, subject, time, tutor, auditory, day, type))
+                    dataList.add(LessonModel(id, subject, tutor, time, auditory, day, type))
                     flag = true
                     lastGroup = group_
                 } else if(day_ == "ALL"){
