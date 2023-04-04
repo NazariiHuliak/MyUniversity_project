@@ -40,7 +40,6 @@ class FridayFragment : Fragment() {
         usersRef.child("group")?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var group = dataSnapshot.getValue(String::class.java).toString()
-                Log.d("", "$group")
                 val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
                 val editor = sharedPref.edit()
                 editor.putString("group", group)

@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -13,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.university_app.databinding.FragmentHomeBinding
 import com.google.android.material.materialswitch.MaterialSwitch
@@ -24,6 +26,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import org.w3c.dom.Text
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+import java.time.format.TextStyle
+import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -43,6 +50,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -50,6 +58,7 @@ class HomeFragment : Fragment() {
         myView = view.findViewById<View>(R.id.popup_background)
         val sharedPreferences = requireActivity().getSharedPreferences("myPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
+
 
         fun showPopupWindow(view: View) {
             val inflater = requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -142,6 +151,70 @@ class HomeFragment : Fragment() {
             myView.visibility = View.VISIBLE
             showPopupWindow(button)
         }
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val database = FirebaseDatabase.getInstance().reference
+        val usersRef = database.child("users").child(currentUser!!.uid)
+        usersRef.child("group").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val group = dataSnapshot.getValue(String::class.java)
+                val sharedPref = requireActivity().getSharedPreferences("HomeFragment", Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putString("group", group)
+                editor.apply()
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+            }
+        })
+
+        val databaseAccess: DatabaseAccess = DatabaseAccess.getInstance(requireContext())
+        databaseAccess.open()
+        val sharedPref = requireActivity().getSharedPreferences("HomeFragment", Context.MODE_PRIVATE)
+        val group_ = sharedPref.getString("group", "")
+        val todays_lessons = group_?.let { databaseAccess.getData(getCurrentDayOfWeek(), it) }
+        databaseAccess.close()
+        val currentTime = getCurrentTime()
+        var currentLessonFlag: Boolean = false
+        var nextLessonFlag: Boolean = false
+        if (todays_lessons != null) {
+            for (i in 0 until todays_lessons.size){
+                val parts = todays_lessons[i].starttime.split("  ")
+                val start = parts[0]
+                val end = parts[1]
+
+                if (currentTime in start..end){
+                    view.findViewById<TextView>(R.id.current_lesson_time).text = todays_lessons[i].starttime
+                    view.findViewById<TextView>(R.id.current_lesson).text = todays_lessons[i].subject
+                    view.findViewById<TextView>(R.id.current_tutor).text = todays_lessons[i].tutor
+                    view.findViewById<TextView>(R.id.current_auditory).text = todays_lessons[i].auditory
+                    currentLessonFlag = true
+
+                    if(i != (todays_lessons.size - 1)){
+                        view.findViewById<TextView>(R.id.current_lesson_time_2).text = todays_lessons[i+1].starttime
+                        view.findViewById<TextView>(R.id.current_lesson_2).text = todays_lessons[i+1].subject
+                        nextLessonFlag = true
+                    }
+                }
+            }
+            if(!currentLessonFlag){
+                view.findViewById<TextView>(R.id.current_lesson_time).text = ""
+                view.findViewById<TextView>(R.id.current_lesson).text = "Немає пари"
+                view.findViewById<TextView>(R.id.current_tutor).text = ""
+                view.findViewById<TextView>(R.id.current_auditory).text = ""
+
+//                view.findViewById<View>(R.id.rectangle_3).visibility = View.INVISIBLE
+//                view.findViewById<View>(R.id.rectangle_2).visibility = View.INVISIBLE
+//                view.findViewById<View>(R.id.rectangle_1).visibility = View.INVISIBLE
+            }
+            if(!nextLessonFlag){
+                view.findViewById<TextView>(R.id.current_lesson_time_2).text = ""
+                view.findViewById<TextView>(R.id.current_lesson_2).text = "Немає пари"
+            }
+        }
+
+        view.findViewById<View>(R.id.rectangle_6).setOnClickListener {
+            Log.d("test", "works")
+        }
     }
 
     fun changePassword(newPassword_: String){
@@ -157,5 +230,17 @@ class HomeFragment : Fragment() {
                     Log.e(ContentValues.TAG, "Error updating password", task.exception)
                 }
             }
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getCurrentDayOfWeek(): String {
+        val currentDay = LocalDate.now().dayOfWeek
+        val currentDayName = currentDay.getDisplayName(TextStyle.FULL, Locale("uk", "UA"))
+        return currentDayName.substring(0, 1).toUpperCase() + currentDayName.substring(1)
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getCurrentTime(): String {
+        val currentTime = LocalTime.now()
+        val formatter = DateTimeFormatter.ofPattern("HH:mm")
+        return currentTime.format(formatter)
     }
 }
