@@ -12,11 +12,11 @@
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_marginTop="63dp"
-
+        android:windowSoftInputMode="adjustNothing"
         android:layout_marginHorizontal="39dp">
 
         <com.google.android.material.textfield.TextInputLayout
-
+            android:id="@+id/search_aud_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:startIconTint = "@color/black"
@@ -26,7 +26,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/serach_aud"
-
+                android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
                 android:layout_height="39dp"
                 android:background="@drawable/map_search_round"

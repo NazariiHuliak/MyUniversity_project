@@ -28,7 +28,8 @@
                 android:textColor="@color/black" />
         </LinearLayout>
         <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
