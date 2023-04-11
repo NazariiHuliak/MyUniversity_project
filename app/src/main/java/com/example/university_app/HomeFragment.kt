@@ -318,6 +318,7 @@ class HomeFragment : Fragment() {
                 dialog.dismiss()
             }
 
+            alertDialog.window?.setBackgroundDrawableResource(R.drawable.shape7)
             alertDialog.show()
         }
         val announcementButton = view.findViewById<ImageButton>(R.id.announcement_button)
@@ -347,6 +348,7 @@ class HomeFragment : Fragment() {
                 dialog.dismiss()
             }
 
+            alertDialog.window?.setBackgroundDrawableResource(R.drawable.shape7)
             alertDialog.show()
         }
     }
