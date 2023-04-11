@@ -302,12 +302,14 @@ class HomeFragment : Fragment() {
 
             val titleTextView = TextView(requireContext())
             titleTextView.text = title
+            titleTextView.setTextColor(Color.BLACK);
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
             titleTextView.setPadding(50, 50, 50, 50)
             linearLayout.addView(titleTextView)
 
             val textTextView = TextView(requireContext())
             textTextView.text = text
+            textTextView.setTextColor(Color.BLACK);
             textTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
             textTextView.setPadding(50, 0, 50, 50)
             linearLayout.addView(textTextView)
@@ -332,12 +334,14 @@ class HomeFragment : Fragment() {
 
             val titleTextView = TextView(requireContext())
             titleTextView.text = title
+            titleTextView.setTextColor(Color.BLACK);
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
             titleTextView.setPadding(50, 50, 50, 50)
             linearLayout.addView(titleTextView)
 
             val textTextView = TextView(requireContext())
             textTextView.text = text
+            textTextView.setTextColor(Color.BLACK);
             textTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
             textTextView.setPadding(50, 0, 50, 50)
             linearLayout.addView(textTextView)
