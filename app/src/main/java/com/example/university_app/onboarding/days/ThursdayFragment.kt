@@ -1,5 +1,6 @@
 package com.example.university_app.onboarding.days
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.example.university_app.DatabaseAccess
@@ -23,6 +25,7 @@ import com.google.firebase.database.ValueEventListener
 
 class ThursdayFragment : Fragment() {
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,41 +35,33 @@ class ThursdayFragment : Fragment() {
 
         var databaseAccess: DatabaseAccess = DatabaseAccess.getInstance(requireContext())
         databaseAccess.open()
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        val database = FirebaseDatabase.getInstance().reference
-        val usersRef = database.child("users").child(currentUser!!.uid)
 
-        usersRef.child("group")?.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                var group = dataSnapshot.getValue(String::class.java).toString()
-                Log.d("", "$group")
-                val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
-                val editor = sharedPref.edit()
-                editor.putString("group", group)
-                editor.apply()
-            }
-            override fun onCancelled(databaseError: DatabaseError) {
-            }
-        })
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         var group_ = sharedPref.getString("group", "")
 
+        var rectangleList = TimetableFragment.getRectangle()
+        var objectsList = TimetableFragment.getObjectLists()
         var dataList: MutableList<LessonModel> = databaseAccess.getData("Четвер","$group_")
         var type = databaseAccess.getTypeOfWeek()
         databaseAccess.close()
 
-        var objectsList = TimetableFragment.getObjectLists()
-
         for ((iterator, i) in dataList.withIndex()) {
             if (i.type == type || i.type == 0) {
-                view.findViewById<TextView>(objectsList[0][iterator]).text = i.tutor
+                view.findViewById<TextView>(objectsList[0][iterator]).text = i.starttime
                 view.findViewById<TextView>(objectsList[1][iterator]).text = i.subject
                 if(i.auditory == "0"){
                     view.findViewById<TextView>(objectsList[2][iterator]).text = "Невідомо"
+                } else if('#' in i.auditory){
+                    var auditory = i.auditory.replace("#", "")
+                    if(auditory == "-1"){
+                        view.findViewById<TextView>(objectsList[2][iterator]).text = "Лекція (дист.)"
+                    }else{
+                        view.findViewById<TextView>(objectsList[2][iterator]).text = "${i.auditory} (Лекція)"
+                    }
                 } else {
                     view.findViewById<TextView>(objectsList[2][iterator]).text = i.auditory
                 }
-                view.findViewById<TextView>(objectsList[3][iterator]).text = i.starttime
+                view.findViewById<TextView>(objectsList[3][iterator]).text = i.tutor
             }
         }
         var IcoList = TimetableFragment.getIcoList()
@@ -79,6 +74,7 @@ class ThursdayFragment : Fragment() {
                 for(j in 0..2){
                     view.findViewById<ImageView>(IcoList[i][j]).visibility = View.INVISIBLE
                 }
+                view.findViewById<RelativeLayout>(rectangleList[i]).visibility = View.INVISIBLE
             }
         }
         return view

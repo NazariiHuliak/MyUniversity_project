@@ -12,7 +12,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper
 class AudienseHelper(context: Context) : SQLiteAssetHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
     companion object {
         private const val DATABASE_NAME = "LessonsDatabase.db"
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 1
     }
 }
 class DatabaseAccessAudiense private constructor(context: Context) {

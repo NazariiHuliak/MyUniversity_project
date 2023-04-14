@@ -24,9 +24,7 @@ class TimetableFragment : Fragment() {
     ): View? {
         var view = inflater.inflate(R.layout.fragment_timetable, container, false)
 
-        Log.d("current", "${getCurrentDayOfWeek()}")
-//        getCurrentDayOfWeek()
-//        Log.d("current", "${getCurrentDayOfWeek()}")
+        //Log.d("current", "${getCurrentDayOfWeek()}")
         return view
     }
     companion object {
@@ -81,6 +79,14 @@ class TimetableFragment : Fragment() {
             )
             return mutableListOf(icoList1,icoList2,icoList3,icoList4)
         }
+        fun getRectangle():MutableList<Int>{
+            return mutableListOf(
+                R.id.card_1,
+                R.id.card_2,
+                R.id.card_3,
+                R.id.card_4)
+        }
+
         @RequiresApi(Build.VERSION_CODES.O)
         fun getCurrentDayOfWeek(): Int {
             val dayOfWeek = DayOfWeek.from(java.time.LocalDate.now())

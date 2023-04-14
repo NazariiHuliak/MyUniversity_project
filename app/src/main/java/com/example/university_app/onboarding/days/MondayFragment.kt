@@ -1,5 +1,6 @@
 package com.example.university_app.onboarding.days
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.viewpager2.widget.ViewPager2
@@ -26,6 +28,8 @@ import com.google.firebase.ktx.Firebase
 
 
 class MondayFragment : Fragment() {
+
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,18 +60,27 @@ class MondayFragment : Fragment() {
         var group_ = sharedPref.getString("group", "")
 
         var dataList: MutableList<LessonModel> = databaseAccess.getData("Понеділок", "$group_")
+
         var objectsList = TimetableFragment.getObjectLists()
         var IcoList = TimetableFragment.getIcoList()
+        var rectangleList = TimetableFragment.getRectangle()
         for ((iterator, i) in dataList.withIndex()) {
             if (i.type == type || i.type == 0) {
-                view.findViewById<TextView>(objectsList[0][iterator]).text = i.tutor
+                view.findViewById<TextView>(objectsList[0][iterator]).text = i.starttime
                 view.findViewById<TextView>(objectsList[1][iterator]).text = i.subject
                 if(i.auditory == "0"){
                     view.findViewById<TextView>(objectsList[2][iterator]).text = "Невідомо"
+                } else if('#' in i.auditory){
+                    var auditory = i.auditory.replace("#", "")
+                    if(auditory == "-1"){
+                        view.findViewById<TextView>(objectsList[2][iterator]).text = "Лекція (дист.)"
+                    }else{
+                        view.findViewById<TextView>(objectsList[2][iterator]).text = "${i.auditory} (Лекція)"
+                    }
                 } else {
                     view.findViewById<TextView>(objectsList[2][iterator]).text = i.auditory
                 }
-                view.findViewById<TextView>(objectsList[3][iterator]).text = i.starttime
+                view.findViewById<TextView>(objectsList[3][iterator]).text = i.tutor
             }
         }
         if (dataList.size != 4) {
@@ -79,11 +92,11 @@ class MondayFragment : Fragment() {
                 for(j in 0..2){
                     view.findViewById<ImageView>(IcoList[i][j]).visibility = View.INVISIBLE
                 }
+                view.findViewById<RelativeLayout>(rectangleList[i]).visibility = View.INVISIBLE
             }
         }
         databaseAccess.close()
-        var viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
-        viewPager?.currentItem = TimetableFragment.getCurrentDayOfWeek()
+
         return view
     }
 }

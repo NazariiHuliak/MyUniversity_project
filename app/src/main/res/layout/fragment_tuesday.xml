@@ -59,6 +59,7 @@
                     android:textSize="17dp" />
 
                 <RelativeLayout
+                    android:id="@+id/card_1"
                     android:layout_width="259dp"
                     android:layout_height="110dp"
                     android:layout_alignParentRight="true"
@@ -165,6 +166,7 @@
                     android:textSize="17dp" />
 
                 <RelativeLayout
+                    android:id="@+id/card_2"
                     android:layout_width="259dp"
                     android:layout_height="110dp"
                     android:layout_alignParentRight="true"
@@ -272,6 +274,7 @@
                     android:textSize="17dp" />
 
                 <RelativeLayout
+                    android:id="@+id/card_3"
                     android:layout_width="259dp"
                     android:layout_height="110dp"
                     android:layout_alignParentRight="true"
@@ -379,6 +382,7 @@
                     android:textSize="17dp" />
 
                 <RelativeLayout
+                    android:id="@+id/card_4"
                     android:layout_width="259dp"
                     android:layout_height="110dp"
                     android:layout_alignParentRight="true"
