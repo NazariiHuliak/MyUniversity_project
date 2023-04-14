@@ -1,18 +1,22 @@
 package com.example.university_app.onboarding
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.viewpager2.widget.ViewPager2
 import com.example.university_app.R
+import com.example.university_app.TimetableFragment
 import com.example.university_app.onboarding.days.*
 import me.relex.circleindicator.CircleIndicator3
 
 class ViewPagerFragment : Fragment() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +39,8 @@ class ViewPagerFragment : Fragment() {
 
         val indicator = view.findViewById<CircleIndicator3>(R.id.indicator)
         indicator.setViewPager(viewPager2)
+
+        viewPager2?.currentItem = TimetableFragment.getCurrentDayOfWeek()
 
         return view
     }
