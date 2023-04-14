@@ -22,4 +22,7 @@
     <style name="ThemeOverlay.Switch" parent="">
         <item name="colorPrimary">@color/green</item>
     </style>
+    <style name="TransparentDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>

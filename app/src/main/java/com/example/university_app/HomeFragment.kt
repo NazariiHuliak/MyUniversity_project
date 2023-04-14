@@ -1,5 +1,6 @@
 package com.example.university_app
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Context
@@ -174,6 +175,7 @@ class HomeFragment : Fragment() {
         val sharedPref = requireActivity().getSharedPreferences("HomeFragment", Context.MODE_PRIVATE)
         val group_ = sharedPref.getString("group", "")
         val todays_lessons = group_?.let { databaseAccess.getData(getCurrentDayOfWeek(), it) }
+        var nextLessonIndex = -1
         databaseAccess.close()
 
         val currentTime = getCurrentTime()
@@ -206,6 +208,7 @@ class HomeFragment : Fragment() {
                     currentLessonFlag = true
 
                     if (i != (todays_lessons.size - 1)) {
+                        nextLessonIndex = i + 1
                         view.findViewById<TextView>(R.id.current_lesson_time_2).text = todays_lessons[i + 1].starttime
                         view.findViewById<TextView>(R.id.current_lesson_2).text = todays_lessons[i + 1].subject
                         nextLessonFlag = true
@@ -223,6 +226,7 @@ class HomeFragment : Fragment() {
 
                         view.findViewById<TextView>(R.id.current_lesson_time_2).text = todays_lessons[i + 1].starttime
                         view.findViewById<TextView>(R.id.current_lesson_2).text = todays_lessons[i + 1].subject
+                        nextLessonIndex = i + 1
                         nextLessonFlag = true
                         break
                     }
@@ -238,15 +242,18 @@ class HomeFragment : Fragment() {
 
                 view.findViewById<TextView>(R.id.current_lesson_time_2).text = ""
                 view.findViewById<TextView>(R.id.current_lesson_2).text = "Пар немає"
+                nextLessonIndex = -1
 
             } else {
                 val parts = todays_lessons[0].starttime.split("  ")
                 if (compareTime(parts[0], currentTime) && !currentLessonFlag) {
                     view.findViewById<TextView>(R.id.current_lesson_time_2).text = todays_lessons[0].starttime
                     view.findViewById<TextView>(R.id.current_lesson_2).text = todays_lessons[0].subject
+                    nextLessonIndex = 0
                 } else if(!nextLessonFlag){
                     view.findViewById<TextView>(R.id.current_lesson_time_2).text = ""
                     view.findViewById<TextView>(R.id.current_lesson_2).text = "На сьогодні все"
+                    nextLessonIndex = -1
                 }
                 if (!currentLessonFlag) {
                     view.findViewById<TextView>(R.id.current_lesson_time).text = ""
@@ -258,7 +265,9 @@ class HomeFragment : Fragment() {
             }
 
             view.findViewById<View>(R.id.rectangle_6).setOnClickListener {
-                Log.d("test", "works")
+                if (nextLessonIndex!=-1){
+                    showAdditionalInformationDialog(requireContext(), todays_lessons[nextLessonIndex])
+                }
             }
         }
     }
@@ -300,4 +309,36 @@ class HomeFragment : Fragment() {
 
         return minutes1 >= minutes2
     }
+
+    @SuppressLint("SetTextI18n")
+    fun showAdditionalInformationDialog(context: Context, lesson: LessonModel ) {
+        val builder = AlertDialog.Builder(context, R.style.TransparentDialog)
+
+        val inflater = LayoutInflater.from(context)
+        val view = inflater.inflate(R.layout.additional_infoemation_dialog, null)
+        builder.setView(view)
+
+        view.findViewById<TextView>(R.id.alert_lesson).text = lesson.subject
+        view.findViewById<TextView>(R.id.alert_auditory).text = lesson.auditory
+
+        if(lesson.auditory == "0"){
+            view.findViewById<TextView>(R.id.alert_auditory).text = "Невідомо"
+        } else if('#' in lesson.auditory){
+            var auditory = lesson.auditory.replace("#", "")
+            if(auditory == "-1"){
+                view.findViewById<TextView>(R.id.alert_auditory).text = "Лекція (дист.)"
+            }else{
+                view.findViewById<TextView>(R.id.alert_auditory).text = "${lesson.auditory} (Лекція)"
+            }
+        } else {
+            view.findViewById<TextView>(R.id.alert_auditory).text = lesson.auditory
+        }
+
+        view.findViewById<TextView>(R.id.alert_tutor).text = lesson.tutor
+        view.findViewById<TextView>(R.id.alert_time).text = lesson.starttime
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
 }
