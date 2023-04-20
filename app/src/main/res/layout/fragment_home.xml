@@ -38,7 +38,8 @@
                 android:layout_alignStart="@+id/main_p">
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="0dp">
                     <View
                         android:id="@+id/rectangle_1"
                         android:layout_width="177dp"
@@ -48,43 +49,45 @@
                         android:background="@drawable/shape1"/>
                     <TextView
                         android:id="@+id/current_lesson_time"
-                        android:layout_width="wrap_content"
+                        android:layout_width="177dp"
+                        android:gravity="center_horizontal"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/rectangle_1"
                         android:layout_alignTop="@+id/rectangle_1"
                         android:paddingTop="2dp"
                         android:text="10:10 - 11:30"
-                        android:layout_marginStart="27dp"
                         android:textColor="@color/white"
                         android:fontFamily="@font/rubik_bold"
                         android:textSize="20dp"/>
                     <TextView
                         android:id="@+id/current_lesson"
-                        android:layout_width="wrap_content"
+                        android:layout_width="250sp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="45dp"
                         android:paddingTop="2dp"
                         android:text="Мат. Логіка"
-                        android:layout_marginStart="38dp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center_horizontal"
                         android:textColor="#2012B9"
                         android:fontFamily="@font/rubik_bold"
-                        android:textSize="32dp"/>
+                        android:textSize="25sp"/>
                     <View
                         android:id="@+id/rectangle_2"
                         android:layout_width="206dp"
                         android:layout_height="28dp"
                         android:layout_marginTop="89dp"
                         android:layout_marginStart="37dp"
-                        android:background="@drawable/shape1" />
+                        android:background="@drawable/shape1">
+                    </View>
                     <TextView
                         android:id="@+id/current_tutor"
-                        android:layout_width="wrap_content"
+                        android:layout_width="206dp"
+                        android:gravity="center_horizontal"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/rectangle_2"
                         android:layout_alignTop="@+id/rectangle_2"
                         android:paddingTop="2dp"
                         android:text="ПІБ"
-                        android:layout_marginStart="10dp"
                         android:textColor="@color/white"
                         android:fontFamily="@font/rubik_bold"
                         android:textSize="20dp"/>
@@ -95,14 +98,13 @@
                         android:layout_marginTop="89dp"
                         android:layout_marginStart="286dp"
                         android:background="@drawable/shape1" />
-
                     <TextView
                         android:id="@+id/current_auditory"
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/rectangle_3"
                         android:layout_alignTop="@+id/rectangle_3"
-                        android:layout_marginStart="6dp"
+                        android:gravity="center_horizontal"
                         android:fontFamily="@font/rubik_light"
                         android:paddingTop="2dp"
                         android:text="439"
@@ -156,6 +158,7 @@
                 android:textColor="@color/black"
                 />
             <TextView
+                android:id="@+id/quote_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="© Хтось там"
@@ -202,13 +205,13 @@
                 android:layout_marginStart="30dp"/>
             <TextView
                 android:id="@+id/current_lesson_2"
-                android:layout_width="wrap_content"
+                android:layout_width="230dp"
+                android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/rectangle_6"
                 android:layout_alignTop="@+id/rectangle_6"
                 android:paddingTop="2dp"
                 android:text="Програмування"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="17dp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/rubik_bold"
@@ -222,13 +225,13 @@
                 android:background="@drawable/shape1" />
             <TextView
                 android:id="@+id/current_lesson_time_2"
-                android:layout_width="wrap_content"
+                android:layout_width="161dp"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/rectangle_7"
                 android:layout_alignTop="@+id/rectangle_7"
                 android:paddingTop="2dp"
                 android:text="10:10 - 11:30"
-                android:layout_marginLeft="17dp"
+                android:gravity="center_horizontal"
                 android:textColor="@color/white"
                 android:fontFamily="@font/rubik_bold"
                 android:textSize="20dp"/>
@@ -288,8 +291,7 @@
                 android:fontFamily="@font/rubik_light"
                 android:text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
                 android:textSize="12dp"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
             <ImageButton
                 android:id="@+id/announcement_button"
                 android:layout_width="137dp"

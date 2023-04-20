@@ -49,19 +49,9 @@ class AuditoryFragment : Fragment() {
         val window = requireActivity().window
         val activityView = window.decorView.findViewById<View>(android.R.id.content)
 
-        //val activityView = activity?.findViewById<View>(android.R.id.content)
+
         val bottomNavigationView = activityView?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-//        input.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
-//            if (hasFocus) {
-//                if (input.text.toString() == "Номер аудиторії") {
-//                    input.setText("")
-//                }
-//            } else {
-//                if (input.text.toString() == "") {
-//                    input.setText("Номер аудиторії")
-//                }
-//            }
-//        }
+
         input.setText(if (isInputEmpty) "Номер аудиторії" else "")
 
         input.setOnFocusChangeListener { v, hasFocus ->

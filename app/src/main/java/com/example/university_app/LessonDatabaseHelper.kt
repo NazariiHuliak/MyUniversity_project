@@ -13,7 +13,7 @@ import java.time.LocalDate
 class LessonDatabaseHelper(context: Context) : SQLiteAssetHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
     companion object {
         private const val DATABASE_NAME = "LessonsDatabase.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 3
     }
 }
 class DatabaseAccess private constructor(context: Context) {
@@ -60,11 +60,13 @@ class DatabaseAccess private constructor(context: Context) {
                     break
                 }
                 if(day == day_ && group_ == group){
-                    dataList.add(LessonModel(id, subject, time, tutor, auditory, day, type))
+                    dataList.add(LessonModel(id, subject, tutor, time, auditory, day, type))
                     flag = true
                     lastGroup = group_
                 } else if(day_ == "ALL"){
-                    dataList.add(LessonModel(id, subject, time, tutor, auditory, day, type))
+                    dataList.add(LessonModel(id, subject, tutor, time, auditory, day, type))
+                    flag = true
+                    lastGroup = group_
                 }
             } while (cursor.moveToNext())
         }

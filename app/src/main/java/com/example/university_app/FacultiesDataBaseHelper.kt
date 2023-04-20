@@ -10,7 +10,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper
 class FacultiesDataBaseHelper(context: Context) : SQLiteAssetHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
     companion object {
         private const val DATABASE_NAME = "faculties.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 3
     }
 }
 class DatabaseAccessFacult private constructor(context: Context) {
