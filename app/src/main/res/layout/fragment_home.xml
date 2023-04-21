@@ -26,11 +26,11 @@
                 tools:ignore="MissingConstraints" />
             <ImageButton
                 android:id="@+id/profile_photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="67dp"
+                android:layout_height="67dp"
                 android:layout_alignEnd="@+id/main_p"
                 android:layout_alignParentTop="true"
-                android:background="@drawable/photoprofile"
+                android:background="@drawable/finalprofilephoto"
                 android:layout_marginEnd="5dp"/>
             <LinearLayout
                 android:layout_width="wrap_content"

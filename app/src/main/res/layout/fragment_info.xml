@@ -71,7 +71,7 @@
             android:drawableEnd="@drawable/button_directionn"
             android:fontFamily="@font/rubik_bold"
 
-            android:text="Контакти"
+            android:text="Деканати"
             android:textColor="@color/black"
             android:textSize="20dp"
             app:backgroundTint="@color/white" />
