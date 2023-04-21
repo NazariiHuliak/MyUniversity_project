@@ -5,11 +5,15 @@ import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +30,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import org.jsoup.Jsoup
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -168,6 +173,102 @@ class HomeFragment : Fragment() {
             }
         })
 
+        var title: String? = null
+        var text: String? = null
+        class NewsParser : AsyncTask<Void, Void, Pair<String, String>?>() {
+            override fun doInBackground(vararg params: Void?): Pair<String, String>? {
+                val url = "https://ami.lnu.edu.ua/news/"
+                val doc = Jsoup.connect(url).get()
+                val article = doc.selectFirst("article")
+                val title = article?.selectFirst("header.header")?.text()
+                val text = article?.selectFirst("div.excerpt")?.text()
+                return if (title != null && text != null) Pair(title, text) else null
+            }
+
+            override fun onPostExecute(result: Pair<String, String>?) {
+                super.onPostExecute(result)
+                if (result != null) {
+                    title = result.first
+                    text = result.second
+                    text = text!!.replace("Читати »", "")
+                    if (text==""){
+                        text = "Текст оголошення відсутній."
+                    }
+                    val titleTextView = view.findViewById<TextView>(R.id.announcement_text)
+                    titleTextView.setText(title)
+                    Log.d("Parsing","Title: $title")
+                    Log.d("Parsing","Text: $text")
+                } else {
+                    println("Помилка парсингу")
+                }
+            }
+
+
+        }
+
+        NewsParser().execute()
+        val announcementText = view.findViewById<TextView>(R.id.announcement_text)
+        announcementText.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(requireContext()).create()
+
+            val scrollView = ScrollView(requireContext())
+            val linearLayout = LinearLayout(requireContext())
+            linearLayout.orientation = LinearLayout.VERTICAL
+            scrollView.addView(linearLayout)
+
+            val titleTextView = TextView(requireContext())
+            titleTextView.text = title
+            titleTextView.setTextColor(Color.BLACK);
+            titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+            titleTextView.setPadding(50, 50, 50, 50)
+            linearLayout.addView(titleTextView)
+
+            val textTextView = TextView(requireContext())
+            textTextView.text = text
+            textTextView.setTextColor(Color.BLACK);
+            textTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
+            textTextView.setPadding(50, 0, 50, 50)
+            linearLayout.addView(textTextView)
+
+            alertDialog.setView(scrollView)
+
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK") { dialog, _ ->
+                dialog.dismiss()
+            }
+
+            alertDialog.show()
+        }
+        val announcementButton = view.findViewById<ImageButton>(R.id.announcement_button)
+        announcementButton.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(requireContext()).create()
+
+            val scrollView = ScrollView(requireContext())
+            val linearLayout = LinearLayout(requireContext())
+            linearLayout.orientation = LinearLayout.VERTICAL
+            scrollView.addView(linearLayout)
+
+            val titleTextView = TextView(requireContext())
+            titleTextView.text = title
+            titleTextView.setTextColor(Color.BLACK);
+            titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+            titleTextView.setPadding(50, 50, 50, 50)
+            linearLayout.addView(titleTextView)
+
+            val textTextView = TextView(requireContext())
+            textTextView.text = text
+            textTextView.setTextColor(Color.BLACK);
+            textTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
+            textTextView.setPadding(50, 0, 50, 50)
+            linearLayout.addView(textTextView)
+
+            alertDialog.setView(scrollView)
+
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK") { dialog, _ ->
+                dialog.dismiss()
+            }
+
+            alertDialog.show()
+        }
 
         val quoteTextView = view.findViewById<TextView>(R.id.quote_text)
         val authorTextView = view.findViewById<TextView>(R.id.quote_author)
