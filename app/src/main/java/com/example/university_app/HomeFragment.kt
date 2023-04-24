@@ -136,14 +136,19 @@ class HomeFragment : Fragment() {
                 inputLayout.addView(inputConfirmPassword)
                 builder.setView(inputLayout)
                 builder.setPositiveButton("Ok") { dialog, which ->
+
                     val newPassword = inputNewPassword.text.toString()
                     val confirmPassword = inputConfirmPassword.text.toString()
-
-                    if (newPassword == confirmPassword) {
-                        // виклик функції зміни пароля
-                        changePassword(newPassword)
+                    if(newPassword.isEmpty()||confirmPassword.isEmpty()){
+                        Toast.makeText(context, "Введіть коректні дані", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, "Паролі не співпадають", Toast.LENGTH_SHORT).show()
+                        if (newPassword == confirmPassword) {
+                            // виклик функції зміни пароля
+                            changePassword(newPassword)
+                        } else {
+                            Toast.makeText(context, "Паролі не співпадають", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     }
                 }
                 builder.setNegativeButton("Скасувати") { dialog, which -> dialog.cancel() }
