@@ -8,12 +8,17 @@ import android.content.Context.MODE_PRIVATE
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.net.ConnectivityManager
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.text.InputType
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -103,7 +108,14 @@ class HomeFragment : Fragment() {
             val newPasswordButton = popupView.findViewById<TextView>(R.id.new_password)
             newPasswordButton.setOnClickListener {
                 val builder = AlertDialog.Builder(context)
-                builder.setTitle("Змінити пароль")
+                val blackSpannableString = SpannableString("Змінити пароль")
+                blackSpannableString.setSpan(ForegroundColorSpan(Color.BLACK), 0, blackSpannableString.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                val title = TextView(context)
+                title.text = blackSpannableString
+                title.gravity = Gravity.CENTER
+                title.textSize = 26F
+                builder.setCustomTitle(title)
 
                 val inputLayout = LinearLayout(context)
                 inputLayout.orientation = LinearLayout.VERTICAL
@@ -111,27 +123,39 @@ class HomeFragment : Fragment() {
                 val inputNewPassword = EditText(context)
                 inputNewPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 inputNewPassword.hint = "Новий пароль"
+                inputNewPassword.setTextColor(Color.BLACK)
+                inputNewPassword.setHintTextColor(Color.BLACK)
 
                 val inputConfirmPassword = EditText(context)
                 inputConfirmPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 inputConfirmPassword.hint = "Підтвердити пароль"
+                inputConfirmPassword.setTextColor(Color.BLACK)
+                inputConfirmPassword.setHintTextColor(Color.BLACK)
 
                 inputLayout.addView(inputNewPassword)
                 inputLayout.addView(inputConfirmPassword)
                 builder.setView(inputLayout)
                 builder.setPositiveButton("Ok") { dialog, which ->
+
                     val newPassword = inputNewPassword.text.toString()
                     val confirmPassword = inputConfirmPassword.text.toString()
-
-                    if (newPassword == confirmPassword) {
-                        // виклик функції зміни пароля
-                        changePassword(newPassword)
+                    if(newPassword.isEmpty()||confirmPassword.isEmpty()){
+                        Toast.makeText(context, "Введіть коректні дані", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, "Паролі не співпадають", Toast.LENGTH_SHORT).show()
+                        if (newPassword == confirmPassword) {
+                            // виклик функції зміни пароля
+                            changePassword(newPassword)
+                        } else {
+                            Toast.makeText(context, "Паролі не співпадають", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     }
                 }
                 builder.setNegativeButton("Скасувати") { dialog, which -> dialog.cancel() }
-                builder.show()
+                val alertDialog = builder.create()
+                val drawable = resources.getDrawable(R.drawable.shape7)
+                alertDialog.window?.setBackgroundDrawable(drawable)
+                alertDialog.show()
             }
 
 
@@ -206,7 +230,16 @@ class HomeFragment : Fragment() {
 
         }
 
-        NewsParser().execute()
+        fun hasInternetConnection(context: Context?): Boolean {
+            val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val networkInfo = connectivityManager.activeNetworkInfo
+            return networkInfo != null && networkInfo.isConnected
+        }
+
+        if (hasInternetConnection(getContext()))
+        {
+            NewsParser().execute()
+        }
         val announcementText = view.findViewById<TextView>(R.id.announcement_text)
         announcementText.setOnClickListener {
             val alertDialog = AlertDialog.Builder(requireContext()).create()
