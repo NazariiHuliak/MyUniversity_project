@@ -389,6 +389,11 @@ class HomeFragment : Fragment() {
                     showAdditionalInformationDialog(requireContext(), todays_lessons[nextLessonIndex])
                 }
             }
+            view.findViewById<ImageButton>(R.id.home_info_button).setOnClickListener {
+                if (nextLessonIndex!=-1){
+                    showAdditionalInformationDialog(requireContext(), todays_lessons[nextLessonIndex])
+                }
+            }
         }
     }
 
