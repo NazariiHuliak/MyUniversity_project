@@ -8,6 +8,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.net.ConnectivityManager
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
@@ -211,7 +212,16 @@ class HomeFragment : Fragment() {
 
         }
 
-        NewsParser().execute()
+        fun hasInternetConnection(context: Context?): Boolean {
+            val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val networkInfo = connectivityManager.activeNetworkInfo
+            return networkInfo != null && networkInfo.isConnected
+        }
+
+        if (hasInternetConnection(getContext()))
+        {
+            NewsParser().execute()
+        }
         val announcementText = view.findViewById<TextView>(R.id.announcement_text)
         announcementText.setOnClickListener {
             val alertDialog = AlertDialog.Builder(requireContext()).create()
