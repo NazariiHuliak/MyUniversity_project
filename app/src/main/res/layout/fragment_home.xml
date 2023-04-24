@@ -289,7 +289,7 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="136dp"
                 android:fontFamily="@font/rubik_light"
-                android:text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+                android:text="Loading..."
                 android:textSize="12dp"
                 android:textColor="@color/black" />
             <ImageButton
