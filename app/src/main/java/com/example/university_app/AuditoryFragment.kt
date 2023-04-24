@@ -121,6 +121,7 @@ class AuditoryFragment : Fragment() {
 
                 } else {
                     imageid.add(R.drawable.enter)
+
                 }
             }
             else{

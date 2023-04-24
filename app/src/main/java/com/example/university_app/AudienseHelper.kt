@@ -41,7 +41,7 @@ class DatabaseAccessAudiense private constructor(context: Context) {
     fun getAllData(): MutableList<AudienseModel> {
         var dataList: MutableList<AudienseModel> = mutableListOf()
 
-        val cursor: Cursor = database.rawQuery("SELECT * FROM Lessons", null)
+        val cursor: Cursor = database.rawQuery("SELECT * FROM Lessons WHERE audience != \"0\" AND audience != \"-1#\";", null)
 
         if (cursor != null && cursor.moveToFirst()) {
             do {

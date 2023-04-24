@@ -83,8 +83,8 @@ class AuditoryAdapter(private val audList: List<Audiences>, private val dataList
             val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
 
             // якщо вільно
-            if (tempIconId == 2131230879) {
 
+            if (tempIconId == R.drawable.enter) {
                 dialog.findViewById<TextView>(R.id.info_lock).setText("Вільно")
                 if (getDayOfWeekString(dayOfWeek) == dataList[adapterPosition].day) {
 
