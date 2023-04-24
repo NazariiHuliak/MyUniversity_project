@@ -10,10 +10,12 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">#000000</item>
         <!-- Customize your theme here. -->
         <!-- Switchers theme. -->
         <item name="materialSwitchStyle">@style/CustomSwitch</item>
+
+
     </style>
 
     <style name="CustomSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
