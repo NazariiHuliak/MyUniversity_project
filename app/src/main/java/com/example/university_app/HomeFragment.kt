@@ -111,10 +111,12 @@ class HomeFragment : Fragment() {
                 val inputNewPassword = EditText(context)
                 inputNewPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 inputNewPassword.hint = "Новий пароль"
+                inputNewPassword.setTextColor(Color.BLACK)
 
                 val inputConfirmPassword = EditText(context)
                 inputConfirmPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 inputConfirmPassword.hint = "Підтвердити пароль"
+                inputConfirmPassword.setTextColor(Color.BLACK)
 
                 inputLayout.addView(inputNewPassword)
                 inputLayout.addView(inputConfirmPassword)
@@ -131,7 +133,10 @@ class HomeFragment : Fragment() {
                     }
                 }
                 builder.setNegativeButton("Скасувати") { dialog, which -> dialog.cancel() }
-                builder.show()
+                val alertDialog = builder.create()
+                val drawable = resources.getDrawable(R.drawable.shape7)
+                alertDialog.window?.setBackgroundDrawable(drawable)
+                alertDialog.show()
             }
 
 
