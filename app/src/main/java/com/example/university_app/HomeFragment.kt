@@ -13,8 +13,12 @@ import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.text.InputType
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -104,7 +108,14 @@ class HomeFragment : Fragment() {
             val newPasswordButton = popupView.findViewById<TextView>(R.id.new_password)
             newPasswordButton.setOnClickListener {
                 val builder = AlertDialog.Builder(context)
-                builder.setTitle("Змінити пароль")
+                val blackSpannableString = SpannableString("Змінити пароль")
+                blackSpannableString.setSpan(ForegroundColorSpan(Color.BLACK), 0, blackSpannableString.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                val title = TextView(context)
+                title.text = blackSpannableString
+                title.gravity = Gravity.CENTER
+                title.textSize = 26F
+                builder.setCustomTitle(title)
 
                 val inputLayout = LinearLayout(context)
                 inputLayout.orientation = LinearLayout.VERTICAL
@@ -113,11 +124,13 @@ class HomeFragment : Fragment() {
                 inputNewPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 inputNewPassword.hint = "Новий пароль"
                 inputNewPassword.setTextColor(Color.BLACK)
+                inputNewPassword.setHintTextColor(Color.BLACK)
 
                 val inputConfirmPassword = EditText(context)
                 inputConfirmPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 inputConfirmPassword.hint = "Підтвердити пароль"
                 inputConfirmPassword.setTextColor(Color.BLACK)
+                inputConfirmPassword.setHintTextColor(Color.BLACK)
 
                 inputLayout.addView(inputNewPassword)
                 inputLayout.addView(inputConfirmPassword)
