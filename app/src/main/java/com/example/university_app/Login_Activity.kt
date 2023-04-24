@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -60,6 +61,47 @@ class Login_Activity : AppCompatActivity() {
             val intent = Intent(this, Register_Activity::class.java)
             startActivity(intent)
         }
+        val forgotPasswordButton = findViewById<TextView>(R.id.forgot_password)
+        forgotPasswordButton.setOnClickListener {
+            showForgotPasswordDialog()
+        }
+    }
+    private fun showForgotPasswordDialog() {
+        val builder = AlertDialog.Builder(this)
+        /*builder.setTitle("Forgot Password")*/
+
+        val view = layoutInflater.inflate(R.layout.alertdialog_forgot_password, null)
+        val emailEditText = view.findViewById<EditText>(R.id.forgot_password_email)
+        builder.setView(view)
+        val dialog = builder.create()
+
+        val buttonReset = view.findViewById<Button>(R.id.forgot_password_button)
+        val buttonCancel = view.findViewById<Button>(R.id.forgot_password_cancel_button)
+        buttonReset.setOnClickListener {
+            val email = emailEditText.text.toString()
+            if (email.isNotEmpty()) {
+                FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "Password reset email sent", Toast.LENGTH_SHORT).show()
+                            dialog.cancel()
+                        } else {
+                            Toast.makeText(this, "Failed to send password reset email", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            } else {
+                Toast.makeText(this, "Please enter your email address", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        buttonCancel.setOnClickListener{
+            dialog.cancel()
+        }
+
+
+        dialog.show()
+
     }
 
     private fun performLogin() {
