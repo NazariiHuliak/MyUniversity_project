@@ -63,7 +63,6 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         auth = Firebase.auth
         myView = view.findViewById<View>(R.id.popup_background)
         val sharedPreferences = requireActivity().getSharedPreferences("myPrefs", MODE_PRIVATE)
