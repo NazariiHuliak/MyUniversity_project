@@ -3,6 +3,7 @@ package com.example.university_app
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -72,6 +73,7 @@ class Login_Activity : AppCompatActivity() {
 
         val view = layoutInflater.inflate(R.layout.alertdialog_forgot_password, null)
         val emailEditText = view.findViewById<EditText>(R.id.forgot_password_email)
+        emailEditText.setHintTextColor(Color.BLACK)
         builder.setView(view)
         val dialog = builder.create()
 
