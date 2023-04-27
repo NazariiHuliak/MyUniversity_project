@@ -98,8 +98,8 @@ class Login_Activity : AppCompatActivity() {
         buttonCancel.setOnClickListener{
             dialog.cancel()
         }
-
-
+        val drawable = resources.getDrawable(R.drawable.shape7)
+        dialog.window?.setBackgroundDrawable(drawable)
         dialog.show()
 
     }
